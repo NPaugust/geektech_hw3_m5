@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
               if (!recyclerView.canScrollVertically(1)){
                   ++page
-                  doRequest(page)
+                  requestByImage(page)
                   }
               }
 
@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity() {
 
             addPhotoBtn.setOnClickListener {
               ++page
-                doRequest(page)
+                requestByImage(page)
             }
             requestBtn.setOnClickListener {
-                doRequest(page)
+                requestByImage(page)
             }
         }
     }
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun ActivityMainBinding.doRequest(page : Int) {
+    private fun ActivityMainBinding.requestByImage(page : Int) {
 
         App.api.getImage(keyWord = keyEd.text.toString(), page = page).enqueue(object : Callback<PixabayModel> {
             override fun onResponse(
